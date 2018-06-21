@@ -15,7 +15,7 @@ public class StudentController {
     public List<Student> list(){
         List<Student> res=new ArrayList<>();
 
-        res.add(new Student(604847,"John",1));
+        res.add(new Student(604847,"John",3));
         res.add(new Student(111111,"One",2));
         return res;
     }
