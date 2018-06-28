@@ -32,3 +32,7 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+task ss{
+    bootRun {systemProperty "spring.profiles.active", "ss"}
+}
