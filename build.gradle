@@ -37,3 +37,7 @@ dependencies {
 task ss{
     bootRun {systemProperty "spring.profiles.active", "ss"}
 }
+
+task home{
+    bootRun {systemProperty "spring.profiles.active", ""}
+}
