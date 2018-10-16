@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties("storage")
 public class StorageProperties {
     private String location="upload-dir";
+    private String imageLocation="upload-dir/images";
 
 
     public String getLocation() {
@@ -18,5 +19,13 @@ public class StorageProperties {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getImageLocation() {
+        return imageLocation;
+    }
+
+    public void setImageLocation(String imageLocation) {
+        this.imageLocation = imageLocation;
     }
 }

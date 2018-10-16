@@ -35,6 +35,14 @@ public class FileUploadContriller {
         return "uploadForm";
     }
 
+    @GetMapping("/images")
+    public String listUploadImages(Model model){
+        model.addAttribute("files", storageService.loadAll().map(
+                path -> MvcUriComponentsBuilder.fromMethodName(FileUploadContriller.class, "serveFile", path.getFileName().toString()).build().toString())
+                .collect(Collectors.toList()));
+        return "imageList";
+    }
+
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
@@ -47,6 +55,11 @@ public class FileUploadContriller {
     @PostMapping("/files")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
